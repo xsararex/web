@@ -1,0 +1,560 @@
+<style>
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Kanit', sans-serif;
+  background-color: #f9f9f9;
+  color: #111; /* ตัวอักษรหลักเป็นดำ */
+  line-height: 1.6;
+}
+
+
+/* ===== Header ===== */
+header {
+  background-color: #06C755;
+  color: #fff;
+  text-align: center;
+  padding: 20px 20px;
+}
+
+header h1 {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+/* ===== Navigation Menu ===== */
+.nav-menu {
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.nav-menu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.nav-menu a:hover {
+  background-color: rgba(255,255,255,0.2);
+}
+
+
+
+/* ===== LINE OA Section ===== */
+#line-oa-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  background-color: #fff;
+  padding: 40px 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+.text-column {
+  flex: 1 1 400px;
+}
+.text-column h2 {
+  font-size: 1.8rem;
+  color: #111; /* header เป็นดำ */
+  margin-bottom: 16px;
+}
+.text-column p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+  color: #111; /* ตัวหนังสือเนื้อหาเป็นดำ */
+}
+.text-column .btn {
+  margin-right: 12px;
+}
+.image-column {
+  flex: 1 1 400px;
+  text-align: center;
+}
+.image-column img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+/* ===== Feature Cards ===== */
+.container-cards {
+  width: 90%;
+  max-width: 1200px;
+  margin: 40px auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: center;
+}
+.feature-card {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  flex: 1 1 280px;
+  max-width: 300px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+.feature-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+.feature-card-content {
+  padding: 16px;
+}
+.feature-card-content h3 {
+  font-size: 1.2rem;
+  color: #111; /* header เป็นดำ */
+  margin-bottom: 8px;
+}
+.feature-card-content p {
+  font-size: 0.95rem;
+  color: #111; /* ตัวหนังสือเนื้อหาเป็นดำ */
+}
+
+/* ===== Buttons ===== */
+.btn {
+  display: inline-block;
+  text-decoration: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 500;
+  margin-top: 12px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.btn-primary {
+  background-color: #06C755;
+  color: #fff;
+}
+.btn-primary:hover {
+  background-color: #05a64a;
+}
+.btn-outlined {
+  border: 1px solid #06C755;
+  color: #06C755;
+}
+.btn-outlined:hover {
+  background-color: #06C755;
+  color: #fff;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 992px) {
+  #line-oa-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  .text-column, .image-column {
+    flex: 1 1 100%;
+  }
+}
+@media (max-width: 768px) {
+  .container-cards {
+    gap: 16px;
+  }
+  .feature-card {
+    max-width: 90%;
+  }
+}
+.discover {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.section-header h2 {
+  font-size: 2rem;
+  color: #111; /* header เป็นดำ */
+  margin-bottom: 20px;
+}
+.tags {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.tag-btn {
+  padding: 6px 14px;
+  border-radius: 6px;
+  border: 1px solid #06C755;
+  background: white;
+  cursor: pointer;
+}
+.tag-btn.active {
+  background: #06C755;
+  color: white;
+}
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.card {
+  flex: 1 1 280px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+.card h3 {
+  color: #111; /* header เป็นดำ */
+  font-size: 1.2rem;
+}
+.card p {
+  font-size: 0.95rem;
+  color: #111; /* ตัวหนังสือเนื้อหาเป็นดำ */
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .cards-container {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+
+
+/* Slider Styles */
+.slider-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  max-width: 100%;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.slider {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.slider img {
+  width: 100%;
+  flex-shrink: 0;
+  object-fit: cover;
+  height: 400px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(6,199,85,0.8);
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.prev:hover, .next:hover {
+  background-color: #05a64a;
+}
+
+.prev { left: 10px; }
+.next { right: 10px; }
+
+@media (max-width:768px) {
+  .slider img { height: 250px; }
+}
+
+
+/* ===== LINE OA + Upload PDF Section ===== */
+.line-oa-section2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1100px;
+}
+
+.line-oa-section2 .image-column {
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+.line-oa-section2 .image-column img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.line-oa-section2 .text-column {
+  flex: 1 1 450px;
+}
+
+.line-oa-section2 h2 {
+  font-size: 1.6rem;
+  color: #06C755;
+  margin-bottom: 10px;
+}
+
+.line-oa-section2 p {
+  font-size: 0.95rem;
+  color: #111;
+  margin-bottom: 14px;
+}
+
+.line-oa-section2 a.btn {
+  margin-right: 8px;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+}
+
+/* ===== line-oa-section2 ===== */
+.line-oa-section2 {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: flex-start;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 30px 20px;
+  border-radius: 12px;
+  margin: 40px auto;
+  max-width: 1200px;
+}
+
+.line-oa-section2 .image-column {
+  order: 0;
+  flex: 1 1 350px;
+  text-align: center;
+}
+
+.line-oa-section2 .image-column img {
+  max-width: 100%;
+  border-radius: 12px;
+}
+
+.line-oa-section2 .text-column {
+  order: 1;
+  flex: 1 1 500px;
+}
+
+.line-oa-section2 h2 {
+  font-size: 1.8rem;
+  color: #06C755;
+  margin-bottom: 12px;
+}
+
+.line-oa-section2 p {
+  font-size: 1rem;
+  color: #111;
+  margin-bottom: 16px;
+}
+
+/* ===== Upload PDF / About Section ===== */
+.about .register-check-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.register-check-left {
+  font-weight: 500;
+  color: #06C755;
+}
+
+.upload-page .container {
+  background-color: #f9f9f9;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.upload-page h3 {
+  color: #06C755;
+  margin-bottom: 16px;
+}
+
+.upload-page label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.upload-page select,
+.upload-page input {
+  width: 100%;
+  padding: 6px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #111;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* เอา focus outline/box-shadow */
+.upload-page select:focus,
+.upload-page input:focus {
+  outline: none;
+  box-shadow: none;
+  background-color: #fff;
+}
+
+.upload-page button {
+  width: 100%;
+  margin-top: 8px;
+  padding: 8px 0;
+  background-color: #06C755;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.upload-page button:hover {
+  background-color: #049645;
+}
+
+@media(max-width: 992px) {
+  .line-oa-section2 {
+    flex-direction: column;
+    text-align: center;
+  }
+  .line-oa-section2 .image-column,
+  .line-oa-section2 .text-column {
+    flex: 1 1 100%;
+    order: initial;
+  }
+}
+
+
+
+
+
+
+
+/* ===== Footer ===== */
+.customFooter {
+  background-color: #f4f4f4; /* สีพื้นหลังรอบนอก */
+  color: #111;
+  padding: 40px 20px;
+  font-family: 'Kanit', sans-serif;
+}
+
+.customFooterContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: #fff; /* สีพื้นหลังตรงเนื้อหา */
+  padding: 30px 20px;
+  border-radius: 12px;
+}
+
+.customFooterMid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.customFooterLinks {
+  flex: 1 1 200px;
+}
+
+.customFooterLinks h5 {
+  color: #06C755;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+
+.customFooterLinks a {
+  display: block;
+  color: #111;
+  text-decoration: none;
+  margin-bottom: 8px;
+  transition: color 0.2s ease;
+}
+
+.customFooterLinks a:hover {
+  color: #06C755;
+}
+
+.customFooterSocial {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.customFooterSocial a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 6px 12px;
+  background-color: #06C755;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s ease;
+}
+
+.customFooterSocial a:hover {
+  background-color: #05a64a;
+}
+
+.customFooterText {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #333;
+  margin-top: 20px;
+}
+
+.customFooterText a {
+  color: #06C755;
+  text-decoration: none;
+}
+
+.customFooterText a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .customFooterMid {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .customFooterLinks {
+    flex: 1 1 100%;
+  }
+}
+</style>
