@@ -1,383 +1,67 @@
 <!DOCTYPE html>
 <html lang="th">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>O.T.K</title>
+  <meta charset="UTF-8">
+  <title>Image to PDF</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style2.css">
-
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header>
-  <div class="header-container">
-    <h1>ใช้สำหรับสำนักอ.ต.ก.พิษณุโลก</h1>
-    <nav class="nav-menu">
-      <a href="#features">คุณสมบัติ</a>
-      <a href="#slider-section">Gallery</a>
-      <a href="#contact">ติดต่อ</a>
-    </nav>
-  </div>
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="logo">SuperPDF</div>
+
+  <nav class="nav-menu">
+    <a href="#">Home</a>
+    <a href="#">Features</a>
+    <a href="#">Convert</a>
+    <a href="#">FAQ</a>
+  </nav>
+
+  <button class="nav-btn">Get Started</button>
 </header>
-<!-- ===== LINE OA Section ===== -->
-<section id="line-oa-section">
-  <div class="text-column">
-    <h2>OTK Official Account</h2>
-    <p>
-      คือเว็บที่ใช้สำหรับสำนัก อ.ต.ก. พิษณุโลก 
-      เพื่อส่งข้อมูลทางการตลาด รวมถึงสื่อสารแบบรายบุคคลกับผู้เช่า
-    </p>
-    <div>
-      <a href="https://lineforbusiness.com/th/service/line-oa-features/broadcast-message" 
-         target="_blank" class="btn btn-outlined">ผู้เช่า
-      </a>
-      <a href="https://entry.line.biz/form/entry/unverified" 
-         target="_blank" class="btn btn-primary">สมัครบัญชีทางการเลย</a>
-    </div>
-  </div>
-  <div class="image-column">
-    <img id="desktop-image" 
-         src="https://github.com/sekartwork-creator/imgesweb/blob/main/kjhhh.png?raw=true" 
-         alt="LINE OA Desktop">
-  </div>
-</section>
 
-<!-- ===== Feature Cards Section ===== -->
-<div class="container-cards">
-  <div class="feature-card">
-    <img src="https://github.com/sekartwork-creator/imgesweb/blob/main/320x%20(1).png?raw=true" alt="Broadcast">
-    <div class="feature-card-content">
-      <h3>ลงชื่อเข้าออกงาน</h3>
-      <p>เพื่อใช้ในการตรวจสอบความถูกต้องของเวลา และเป็นหลักฐานสำหรับการจัดการข้อมูลบุคคล.</p>
-      <a href="https://script.google.com/macros/s/AKfycbyK_IXGTJisgSzmYLMR-8e2f0yEPIdd4B6F91WEgQ8OmAGKQwxYJUI45OWBIJnXiVk/exec" class="btn btn-primary">เข้าใช้งาน</a>
-    </div>
-  </div>
+<!-- ================= HERO ================= -->
+<main class="hero">
+  <div class="pdf-card">
 
-  <div class="feature-card">
-    <img src="https://github.com/sekartwork-creator/imgesweb/blob/main/320x%20(2).png?raw=true" alt="Chat">
-    <div class="feature-card-content">
-      <h3>คำนวณค่าน้ำและไฟฟ้า</h3>
-      <p>การคำนวณค่าน้ำและไฟฟ้าคือการนำ (มิเตอร์ใหม่ - มิเตอร์เก่า) × อัตราต่อหน่วย มาคิดเป็นค่าใช้จ่าย.</p>
-      <a href="#" class="btn btn-outlined">ดูรายละเอียด</a>
-    </div>
-  </div>
+    <h2>Create PDF</h2>
 
-  <div class="feature-card">
-    <img src="https://github.com/sekartwork-creator/imgesweb/blob/main/07%20l%20ufp%20(12).png?raw=true" alt="Rich Menu">
-    <div class="feature-card-content">
-      <h3>ข้อมูลผู้เช่า</h3>
-      <p>สร้างเมนูแบบกำหนดเองเพื่อให้ลูกค้าสามารถเข้าถึงบริการของคุณได้ง่ายขึ้น</p>
-      <a href="reportt.html">ดูรายละเอียด</a>
-    </div>
-  </div>
-</div>
+    <input
+      type="text"
+      id="pdfName"
+      placeholder="PDF name"
+    >
 
+    <label class="file-select">
+      Select images
+      <input
+        type="file"
+        id="images"
+        accept="image/*"
+        multiple
+      >
+    </label>
 
+    <button id="createPdf">Create PDF</button>
 
-<!-- ===== Slider Section ===== -->
-<section id="slider-section" style="padding:40px 20px; max-width:800px; margin:40px auto;">
-  <h2 style="color:#111; text-align:center; margin-bottom:24px;">Gallery</h2>
-  <div class="slider-container" style="position:relative; overflow:hidden; border-radius:12px;">
-    <a href="https://example.com/1" target="_blank">
-      <img class="slide" src="https://firebasestorage.googleapis.com/v0/b/sekkport.appspot.com/o/Start%20your%20art%20education%20today%20(5).png?alt=media&token=f549c314-8094-4250-a700-6b7980c2f1dc" alt="Slide 1" style="width:100%; display:block;">
-    </a>
-    <a href="https://example.com/2" target="_blank">
-      <img class="slide" src="https://via.placeholder.com/800x400?text=รูป+2" alt="Slide 2" style="width:100%; display:none;">
-    </a>
-    <a href="https://example.com/3" target="_blank">
-      <img class="slide" src="https://via.placeholder.com/800x400?text=รูป+3" alt="Slide 3" style="width:100%; display:none;">
-    </a>
-    <a href="https://example.com/4" target="_blank">
-      <img class="slide" src="https://via.placeholder.com/800x400?text=รูป+4" alt="Slide 4" style="width:100%; display:none;">
-    </a>
-
-    <!-- ปุ่ม -->
-    <button class="prev" style="position:absolute; top:50%; left:10px; transform:translateY(-50%); background:#06C755; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;">&#10094;</button>
-    <button class="next" style="position:absolute; top:50%; right:10px; transform:translateY(-50%); background:#06C755; color:#fff; border:none; padding:8px 12px; border-radius:6px; cursor:pointer;">&#10095;</button>
-  </div>
-</section>
-
-
-
-
-<section class="discover" id="feature">
-  <div class="section-header">
-    <h2>ฟีเจอร์</h2>
-    <div class="tags">
-      <button class="tag-btn active" data-tag="All">All</button>
-      <button class="tag-btn" data-tag="Sales">Increase Sales</button>
-      <button class="tag-btn" data-tag="CRM">CRM</button>
-      <button class="tag-btn" data-tag="Engagement">Customer Engagement</button>
-      <button class="tag-btn" data-tag="Operation">Operation Efficiency</button>
-      <button class="tag-btn" data-tag="Brand">Brand Awareness</button>
-    </div>
-  </div>
-
-  <div class="cards-container" id="cards-container">
-    <!-- ตัวอย่างการ์ด -->
-    <div class="card" data-tag="Sales,CRM,Engagement">
-      <img src="https://github.com/sekartwork-creator/imgesweb/blob/main/320x.png?raw=true" alt="ฟีเจอร์ 1">
-      <h3>ลงชื่อเข้าออกงาน (BROADCAST)</h3>
-      <p>ส่งข้อความไปยังกลุ่มเป้าหมายแบบเลือกกลุ่มได้ เช่น คนที่เคยคลิกลิงก์ / เปิดข้อความ / มี User ID</p>
-    </div>
-
-    <div class="card" data-tag="Sales,Operation,Engagement">
-      <img src="https://github.com/sekartwork-creator/imgesweb/blob/main/07%20l%20ufp%20(14).png?raw=true" alt="ฟีเจอร์ 2">
-      <h3>การ์ดเมสเสจ (CARD-BASED MESSAGES)</h3>
-      <a href="https://script.google.com/macros/s/AKfycbxvdHLMTQC0BK3EjAZ_7YJmZSXZFZ0OU9TMewGI41sTMdqQ8qRGxDSxHnNAlyMx_Ik9/exec" class="btn btn-primary">ดูรายละเอียด</a>
-    </div>
-
-    <div class="card" data-tag="Sales,Engagement">
-      <img src="https://github.com/sekartwork-creator/imgesweb/blob/main/07%20l%20ufp%20(14).png?raw=true" alt="ฟีเจอร์ 3">
-      <h3>ริชวิดีโอเมสเสจ (RICH VIDEOS MESSAGES)</h3>
-      <p>ส่งวิดีโอเต็มหน้าจอ เล่นอัตโนมัติ เพื่อเพิ่มความน่าสนใจของสินค้า</p>
-    </div>
-  </div>
-
-</section>
-
-
-
-<!-- ===== LINE OA + Upload PDF Section ===== -->
-<section id="line-oa-section2" class="line-oa-section2">
-  <!-- รูปอยู่ซ้าย -->
-  <div class="image-column">
-    <img id="desktop-image" 
-         src="https://firebasestorage.googleapis.com/v0/b/sekkport.appspot.com/o/9665.png?alt=media&token=5f08c567-adc3-42bd-9f02-8e26fb41811a" 
-         alt="LINE OA Desktop">
-  </div>
-
-  <!-- ข้อความ + Upload PDF อยู่ขวา -->
-  <div class="text-column">
-    <h2>Upload ใบแจ้งหนี้</h2>
-    <p>
-      คือบัญชีทางการสำหรับธุรกิจที่ช่วยให้ร้านค้าสามารถสร้างฐานผู้ติดตามไม่จำกัด 
-      เพื่อส่งข้อมูลทางการตลาด โปรโมชั่นพิเศษ รวมถึงสื่อสารแบบรายบุคคลกับลูกค้า
-    </p>
-    <div>
-      <a href="https://drive.google.com/drive/folders/1rib3Or4kNVYcD_sjsbnfJKSmnrFJV67P?usp=sharing" 
-         target="_blank" class="btn btn-outlined">ดูราคาแพ็กเกจ</a>
-      <a href="https://entry.line.biz/form/entry/unverified" 
-         target="_blank" class="btn btn-primary">สมัครบัญชีทางการเลย</a>
-    </div>
-<p>
-   
-    </p>
-    <!-- ===== Upload PDF ===== -->
-    <div class="upload-section">
-      <div class="register-check-container">
-        
-        <div class="register-check-right">
-          <div class="upload-page">
-            <div class="container">
-
-              <label>เลือกชื่อ:</label>
-              <select id="folderSelect"></select>
-
-              <label>เลือกเดือน:</label>
-              <select id="monthSelect">
-                <option value="มกราคม">มกราคม</option>
-                <option value="กุมภาพันธ์">กุมภาพันธ์</option>
-                <option value="มีนาคม">มีนาคม</option>
-                <option value="เมษายน">เมษายน</option>
-                <option value="พฤษภาคม">พฤษภาคม</option>
-                <option value="มิถุนายน">มิถุนายน</option>
-                <option value="กรกฎาคม">กรกฎาคม</option>
-                <option value="สิงหาคม">สิงหาคม</option>
-                <option value="กันยายน">กันยายน</option>
-                <option value="ตุลาคม">ตุลาคม</option>
-                <option value="พฤศจิกายน">พฤศจิกายน</option>
-                <option value="ธันวาคม">ธันวาคม</option>
-              </select>
-
-              <label>เลือกปี:</label>
-              <select id="yearSelect">
-                <option value="2568">2568</option>
-                <option value="2567">2567</option>
-                <option value="2566">2566</option>
-              </select>
-
-              <label>เลือกไฟล์ PDF:</label>
-              <input type="file" id="fileInput" accept="application/pdf">
-
-              <button onclick="uploadFile()">อัปโหลดไฟล์</button>
-
-              <div id="result"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- ===== จบ Upload PDF ===== -->
-
-  </div>
-</section>
-
-
-<div class="accordion">
-  <div class="accordion-header">คลิกเพื่อดู 8 เรื่อง</div>
-  <div class="accordion-content">
-    <ul>
-      <li>เรื่องที่ 1: รายละเอียด</li>
-      <li>เรื่องที่ 2: รายละเอียด</li>
-      <li>เรื่องที่ 3: รายละเอียด</li>
-      <li>เรื่องที่ 4: รายละเอียด</li>
-      <li>เรื่องที่ 5: รายละเอียด</li>
-      <li>เรื่องที่ 6: รายละเอียด</li>
-      <li>เรื่องที่ 7: รายละเอียด</li>
-      <li>เรื่องที่ 8: รายละเอียด</li>
-    </ul>
-  </div>
-</div>
-
-
-<!-----------ส่วน footer---------->
-<section class="customFooter" id="customFooter">
-  <div class="customFooterContainer">
-    <div class="customFooterMid">
-      <div class="customFooterLinks">
-        <h5>รายงานต่างๆ</h5>
-        <a href=""></a>
-        <a href="/css/default.asp">บันทึกมิเตอร์น้ำ-ไฟฟ้า</a>
-    <a href="https://script.google.com/macros/s/AKfycbx_34x6kZFKrdf_aKZSVLjg60Dbun-t4Fqe622d8oYKYHORFZiNURPXy_-xwRkV5CMj/exec" target="_blank" rel="noopener noreferrer">รายงานข้อมูลผู้เช่าทั้งหมด</a>
-   <a href="https://script.google.com/macros/s/AKfycbzag9ElAGQOPIXoaE6a_tQoLb73VG5AlIG03H7cEGF0zeVT1_mbX0qfAjQzkR0_JGJQ/exec" target="_blank" rel="noopener noreferrer">รายงานการเข้า-ออกงาน</a>
-    <a href="https://script.google.com/macros/s/AKfycbzCgAJcP8jsNak27rNqpPWVCBjUkRmY_4EkVkAk_VCkWIhr9O6uRNVaKLv6CQ93VZuZJg/exec" target="_blank" rel="noopener noreferrer">เพิ่มผู้เช่า</a>
-
-        
-      </div>
-
-      <div class="customFooterLinks">
-        <h5>Top References</h5>
-        <a href="/tags/default.asp">HTML Ref</a>
-        <a href="/cssref/index.php">CSS Ref</a>
-        <a href="/jsref/default.asp">JS Ref</a>
-        <a href="/sql/sql_ref_keywords.asp">SQL Ref</a>
-      </div>
-
-      <div class="customFooterLinks">
-        <h5>ติดต่อสอบถาม</h5>
-        <a href="/html/html_examples.asp">02-407-3888 กด 0</a>
-        <a href="/css/css_examples.asp">จันทร์-เสาร์</a>
-        <a href="/js/js_examples.asp">08.30 – 16.45 น</a>
-      </div>
-
-      <div class="customFooterLinks">
-        <h5>The City</h5>
-        <a>Chania is the capital of the Chania region on the island of Crete.</a>
-        <a>The city can be divided in two parts, the old town and the modern city.</a>
-        <a>The old town is situated next to the old harbour and is</a>
-        <a>the matrix around which the whole urban area was developed.</a>
-      </div>
-    </div>
-
-    <div class="customFooterSocial">
-      <a href="https://www.youtube.com/@w3schools" target="_blank">YouTube</a>
-      <a href="https://www.facebook.com/w3schoolscom/" target="_blank">Facebook</a>
-      <a href="https://www.instagram.com/w3schools.com_official/" target="_blank">Instagram</a>
-    </div>
-
-    <div class="customFooterText">
-      © 1999-2025 Refsnes Data. All Rights Reserved. |
-      <a href="/about/about_privacy.asp">Privacy Policy</a>
+    <div class="progress">
+      <div class="progress-bar" id="progressBar"></div>
     </div>
 
   </div>
-</section>
+</main>
 
-<script>
-  // ฟังก์ชันกรองการ์ดตาม Tag
-  const tagButtons = document.querySelectorAll('.tag-btn');
-  const cards = document.querySelectorAll('.card');
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <p>© 2026 PDF Maker</p>
+</footer>
 
-  tagButtons.forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelector('.tag-btn.active').classList.remove('active');
-      btn.classList.add('active');
-      const tag = btn.dataset.tag;
-      cards.forEach(card => {
-        if(tag === 'All' || card.dataset.tag.includes(tag)) {
-          card.style.display = 'flex';
-        } else {
-          card.style.display = 'none';
-        }
-      });
-    });
-  });
-
-  // ===== Slider =====
-  let currentSlide = 0;
-  const slides = document.querySelectorAll(".slide");
-  const totalSlides = slides.length;
-
-  document.querySelector(".next").addEventListener("click", () => {
-    slides[currentSlide].style.display = "none";
-    currentSlide = (currentSlide + 1) % totalSlides;
-    slides[currentSlide].style.display = "block";
-  });
-
-  document.querySelector(".prev").addEventListener("click", () => {
-    slides[currentSlide].style.display = "none";
-    currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-    slides[currentSlide].style.display = "block";
-  });
-
-  // ===== Upload PDF =====
-  function populateFolders(names) {
-    const select = document.getElementById("folderSelect");
-    select.innerHTML = "";
-    names.forEach(name => {
-      const option = document.createElement("option");
-      option.value = name;
-      option.textContent = name;
-      select.appendChild(option);
-    });
-  }
-
-  // โหลดชื่อโฟลเดอร์เมื่อเปิดหน้า
-  google.script.run.withSuccessHandler(populateFolders).getSubFolders();
-
-  function showResult(msg) {
-    document.getElementById("result").textContent = msg;
-  }
-
-  function uploadFile() {
-    const folderName = document.getElementById("folderSelect").value;
-    const month = document.getElementById("monthSelect").value;
-    const year = document.getElementById("yearSelect").value;
-    const fileInput = document.getElementById("fileInput");
-    const file = fileInput.files[0];
-
-    if(!file) {
-      alert("กรุณาเลือกไฟล์ก่อน");
-      return;
-    }
-
-    const reader = new FileReader();
-    reader.onload = function(e) {
-      const base64Data = e.target.result.split(",")[1]; // แยกส่วน base64
-      google.script.run.withSuccessHandler(showResult)
-                       .uploadFileFromBase64(folderName, base64Data, file.name, file.type, month, year);
-    }
-    reader.readAsDataURL(file);
-  }
-
-
-const accordion = document.querySelector(".accordion");
-  const header = accordion.querySelector(".accordion-header");
-
-  header.addEventListener("click", () => {
-    accordion.classList.toggle("active");
-  });
-
-
-
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
-
-
-
